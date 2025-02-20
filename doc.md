@@ -24,13 +24,13 @@
 
 ```json
 {
-    "ID": "number",
+    "id": "number",
     "title": "string",
     "description": "string",
     "completed": false,
-    "CreatedAt": "string",
-    "UpdatedAt": "string",
-    "DeletedAt": null
+    "created_at": "string",
+    "updated_at": "string",
+    "deleted_at": null
 }
 ```
 
@@ -44,45 +44,54 @@
 ```json
 [
     {
-        "ID": "number",
+        "id": "number",
         "title": "string",
         "description": "string",
         "completed": "boolean",
-        "CreatedAt": "string",
-        "UpdatedAt": "string",
-        "DeletedAt": null
+        "created_at": "string",
+        "updated_at": "string",
+        "deleted_at": null
     }
 ]
 ```
 
 ### 获取单个 Todo
 
--   方法: `GET`
--   路径: `/api/todos/:id`
+-   方法: `POST`
+-   路径: `/api/todos/get`
 -   描述: 获取指定 ID 的待办事项
+-   请求体:
+
+```json
+{
+    "id": "number"
+}
+```
+
 -   响应: `200 OK`
 
 ```json
 {
-    "ID": "number",
+    "id": "number",
     "title": "string",
     "description": "string",
     "completed": "boolean",
-    "CreatedAt": "string",
-    "UpdatedAt": "string",
-    "DeletedAt": null
+    "created_at": "string",
+    "updated_at": "string",
+    "deleted_at": null
 }
 ```
 
 ### 更新 Todo
 
--   方法: `PUT`
--   路径: `/api/todos/:id`
+-   方法: `POST`
+-   路径: `/api/todos/update`
 -   描述: 更新指定 ID 的待办事项
 -   请求体:
 
 ```json
 {
+    "id": "number",
     "title": "string",
     "description": "string",
     "completed": "boolean"
@@ -93,21 +102,83 @@
 
 ```json
 {
-    "ID": "number",
+    "id": "number",
     "title": "string",
     "description": "string",
     "completed": "boolean",
-    "CreatedAt": "string",
-    "UpdatedAt": "string",
-    "DeletedAt": null
+    "created_at": "string",
+    "updated_at": "string",
+    "deleted_at": null
+}
+```
+
+### 完成 Todo
+
+-   方法: `POST`
+-   路径: `/api/todos/complete`
+-   描述: 将指定 ID 的待办事项标记为已完成
+-   请求体:
+
+```json
+{
+    "id": "number"
+}
+```
+
+-   响应: `200 OK`
+
+```json
+{
+    "id": "number",
+    "title": "string",
+    "description": "string",
+    "completed": true,
+    "created_at": "string",
+    "updated_at": "string",
+    "deleted_at": null
+}
+```
+
+### 取消完成 Todo
+
+-   方法: `POST`
+-   路径: `/api/todos/uncomplete`
+-   描述: 将指定 ID 的待办事项标记为未完成
+-   请求体:
+
+```json
+{
+    "id": "number"
+}
+```
+
+-   响应: `200 OK`
+
+```json
+{
+    "id": "number",
+    "title": "string",
+    "description": "string",
+    "completed": false,
+    "created_at": "string",
+    "updated_at": "string",
+    "deleted_at": null
 }
 ```
 
 ### 删除 Todo
 
--   方法: `DELETE`
--   路径: `/api/todos/:id`
+-   方法: `POST`
+-   路径: `/api/todos/delete`
 -   描述: 删除指定 ID 的待办事项
+-   请求体:
+
+```json
+{
+    "id": "number"
+}
+```
+
 -   响应: `204 No Content`
 
 ## 错误响应

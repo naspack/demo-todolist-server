@@ -14,8 +14,10 @@ func SetupRoutes(r *gin.Engine) {
 	{
 		todos.POST("", controllers.CreateTodo)
 		todos.GET("", controllers.GetTodos)
-		todos.GET("/:id", controllers.GetTodo)
-		todos.PUT("/:id", controllers.UpdateTodo)
-		todos.DELETE("/:id", controllers.DeleteTodo)
+		todos.POST("/get", controllers.GetTodo)
+		todos.POST("/update", controllers.UpdateTodo)
+		todos.POST("/delete", controllers.DeleteTodo)
+		todos.POST("/complete", controllers.CompleteTodo)
+		todos.POST("/uncomplete", controllers.UncompleteTodo)
 	}
 }
